@@ -2,7 +2,7 @@ import { useState } from "react";
 import { styled } from "styled-components";
 
 import Button from "./Button.jsx";
-import Input from "./Input.jsx";
+import CustomInput from "./Input.jsx";
 
 const ControlContainer = styled.div`
   display: flex;
@@ -34,28 +34,26 @@ export default function AuthInputs() {
   return (
     <div id="auth-inputs">
       <ControlContainer>
-        <p className="paragraph">
-          <Label $invalid={emailNotValid}>Email</Label>
-          <Input
-            $invalid={emailNotValid}
-            type="email"
-            // style={{
-            //   backgroundColor: emailNotValid ? "#fed2d2" : "#d1d5db",
-            // }}
-            className={emailNotValid ? "invalid" : undefined}
-            onChange={(event) => handleInputChange("email", event.target.value)}
-          />
-        </p>
-        <p>
-          <Label $invalid={passwordNotValid}>Password</Label>
-          <Input
-            $invalid={passwordNotValid}
-            type="password"
-            onChange={(event) =>
-              handleInputChange("password", event.target.value)
-            }
-          />
-        </p>
+        <CustomInput
+          label="Email"
+          $invalid={emailNotValid}
+          type="email"
+          // style={{
+          //   backgroundColor: emailNotValid ? "#fed2d2" : "#d1d5db",
+          // }}
+          // className={emailNotValid ? "invalid" : undefined}
+          onChange={(event) => handleInputChange("email", event.target.value)}
+        />
+
+        {/* <CustomInput invalid={passwordNotValid}>Password</CustomInput> */}
+        <CustomInput
+          $invalid={passwordNotValid}
+          label="Password"
+          type="password"
+          onChange={(event) =>
+            handleInputChange("password", event.target.value)
+          }
+        />
       </ControlContainer>
       <div className="actions">
         <button type="button" className="text-button">
